@@ -2,10 +2,12 @@ import Config
 
 # Configure your database
 config :ariex_tech_backend, AriexTechBackend.Repo,
-  username: "postgres",
-  password: "postgres",
-  hostname: "localhost",
-  database: "ariex_tech_backend_dev",
+  username: System.get_env("DB_USERNAME"),
+  password: System.get_env("DB_PASSWORD"),
+  hostname: System.get_env("DB_HOSTNAME"),
+  database: System.get_env("DB_DATABASE"),
+  port: System.get_env("DB_PORT") || 5432,
+  pool_mode: "session",
   stacktrace: true,
   show_sensitive_data_on_connection_error: true,
   pool_size: 10
